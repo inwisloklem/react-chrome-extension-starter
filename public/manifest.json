@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "New Tab App",
+  "version": "0.1.0",
+  "icons": {
+    "32": "icon32.png",
+    "64": "icon64.png",
+    "128": "icon128.png",
+    "256": "icon256.png",
+    "512": "icon512.png"
+  },
+  "permissions": ["topSites"],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "background": {"scripts": ["hot-reload.js"]}
+}
