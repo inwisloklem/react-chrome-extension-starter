@@ -7,6 +7,7 @@ const outputPath = 'dist'
 module.exports = {
   webpack(config) {
     const appDirectory = fs.realpathSync(process.cwd())
+    config.entry = config.entry.filter(entry => !entry.includes('webpackHotDevClient'))
     config.output.path = path.resolve(appDirectory, outputPath)
     config.plugins = (config.plugins || []).concat([
       new CopyWebpackPlugin([{from: 'public'}], {ignore: ['*.html']}),
@@ -19,9 +20,6 @@ module.exports = {
       const config = configFunction(proxy, allowedHost)
       return {
         ...config,
-        hot: false,
-        inline: false,
-        liveReload: false,
         writeToDisk: true,
       }
     }
